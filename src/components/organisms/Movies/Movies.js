@@ -1,0 +1,27 @@
+import React, { Component} from "react";
+import Movie from "../../molecules/Movie/Movie";
+
+export default function Movies({movies, handleMovies}) {
+    let moviesContent;
+
+    if (movies.length) {
+        moviesContent = movies.map(movie =>
+            <div className="col-md-4 d-flex align-items-stretch" key={movie.id}>
+                <Movie movie={movie} />
+            </div>
+        );
+    }
+    else {
+        moviesContent = <div className="col-md-12">
+            <h2>No films found</h2>
+        </div>
+    }
+
+    return (
+        <div className="container">
+            <div className="row">
+                {moviesContent}
+            </div>
+        </div>
+    )
+}

@@ -1,0 +1,13 @@
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+//-------- Atoms
+@import "components/atoms/Image/Image";
+@import "components/atoms/Button/Button";
+@import "components/atoms/Input/Input";
+
+//-------- Molecules
+@import "components/molecules/Movie/Movie";
+@import "components/molecules/Panel/Panel";
+
+//-------- Organisms
+@import "components/organisms/Header/Header";

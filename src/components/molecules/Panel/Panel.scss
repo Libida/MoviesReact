@@ -1,0 +1,5 @@
+.panel-sort-by {
+  @include media-breakpoint-up(sm) {
+    float: right;
+  }
+}
