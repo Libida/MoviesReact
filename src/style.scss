@@ -4,9 +4,11 @@
 @import "components/atoms/Image/Image";
 @import "components/atoms/Button/Button";
 @import "components/atoms/Input/Input";
+@import "components/atoms/TextHighlightValue/TextHighlightValue";
 
 //-------- Molecules
-@import "components/molecules/Movie/Movie";
+@import "components/molecules/MovieListingItem/MovieListingItem";
+@import "components/molecules/MovieDetails/MovieDetails";
 @import "components/molecules/Panel/Panel";
 
 //-------- Organisms

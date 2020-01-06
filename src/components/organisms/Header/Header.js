@@ -1,22 +1,19 @@
 import React from "react";
-import Logo from "../../molecules/Logo/Logo";
-import Search from "../../molecules/Search/Search";
+import Image from "../../atoms/Image/Image";
+import {Link} from "react-router-dom";
 
 export default function Header(props) {
     return(
-        <header className="header jumbotron">
+        <header className="header jumbotron pb-5 pt-5 mb-0">
             <div className="container">
-
-                <Logo />
-
                 <div className="row">
                     <div className="col-sm-12">
-                        <h1 className="display-5 d-block">Find your movie</h1>
-                    </div>
+                        <Link to="/">
+                            <Image src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" title="Netflix"
+                                   incomeWrapClasses="header__logo"/>
+                        </Link>
+                       </div>
                 </div>
-
-                <Search {...props}/>
-
             </div>
         </header>
     );

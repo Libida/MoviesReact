@@ -1,5 +1,5 @@
 import React, { Component} from "react";
-import Movie from "../../molecules/Movie/Movie";
+import MovieListingItem from "../../molecules/MovieListingItem/MovieListingItem";
 
 export default function Movies({movies, handleMovies}) {
     let moviesContent;
@@ -7,7 +7,7 @@ export default function Movies({movies, handleMovies}) {
     if (movies.length) {
         moviesContent = movies.map(movie =>
             <div className="col-md-4 d-flex align-items-stretch" key={movie.id}>
-                <Movie movie={movie} />
+                <MovieListingItem movie={movie} />
             </div>
         );
     }

@@ -1,0 +1,14 @@
+.text-highlight-value {
+  display: inline-block;
+  margin-right: $grid-gutter-width;
+}
+
+.text-highlight-value__value {
+  color: $red;
+  font-size: 180%;
+}
+
+.text-highlight-value__after-value {
+  padding-left: 1%;
+  color: $gray-600;
+}

@@ -1,9 +1,9 @@
 import React, { Component} from "react";
 import Movies from "../organisms/Movies/Movies";
-import Header from "../organisms/Header/Header";
-import data from "../../data";
+import data from "../../data/movies";
+import Search from "../molecules/Search/Search";
 
-export default class MoviesListing extends Component{
+export default class MoviesListingTemplate extends Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -59,15 +59,15 @@ export default class MoviesListing extends Component{
         }
 
         return(
-            <div>
-                <Header movies={this.state.movies}
+            <>
+                <Search movies={this.state.movies}
                         searchTerm={this.state.searchTerm} handleSearchTerm={this.handlerSearchTerm}
                         searchBy={this.state.searchBy} handleSearchBy={this.handlerSearchBy}
                         sortBy={this.state.sortBy} handleSortBy={this.handlerSortBy}
                         handleFullSearch={this.handlerFullSearch}/>
 
                 <Movies movies={this.state.movies} />
-            </div>
+            </>
         )
     }
 }
