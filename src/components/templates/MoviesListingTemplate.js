@@ -1,16 +1,20 @@
-import React, { Component} from "react";
+import React, {Component, useEffect, useState} from "react";
 import Movies from "../organisms/Movies/Movies";
-import data from "../../data/movies";
 import Search from "../molecules/Search/Search";
+import handleFetchErrors from "../../utils/errors";
+import {getMoviesSearchURL, getMoviesSearchQuery, getSearchURLParams} from "../../utils/urls";
+import {getInitialPropsFromURL} from "../../utils/movie-props";
 
-export default class MoviesListingTemplate extends Component{
+export default class MoviesListingTemplate extends Component {
     constructor(props) {
         super(props);
+        const propsFromURL = getInitialPropsFromURL(this.props) || {};
         this.state = {
-            movies: data.data || [],
-            searchTerm: "",
-            searchBy: "Title",
-            sortBy: "Rating",
+            movies: [],
+            moviesAmount: 0,
+            searchTerm: propsFromURL.searchTerm,
+            searchBy: propsFromURL.searchBy,
+            sortBy: propsFromURL.sortBy,
             hasError: false
         };
 
@@ -18,6 +22,28 @@ export default class MoviesListingTemplate extends Component{
         this.handlerSearchBy = this.handleSearchBy.bind(this);
         this.handlerSortBy = this.handleSortBy.bind(this);
         this.handlerFullSearch = this.handleFullSearch.bind(this);
+    }
+
+    componentDidMount() {
+        this.getMovies();
+    }
+
+    getMovies() {
+        const url = getMoviesSearchURL(this.state);
+        fetch(url)
+            .then(handleFetchErrors)
+            .then(response => response.json())
+            .then(data => {
+                this.handleMoviesUpdate(data);
+            })
+            .catch(error => console.log(error));
+    }
+
+    handleMoviesUpdate(movies) {
+        this.setState({
+            movies: movies.data,
+            moviesAmount: movies.total
+        });
     }
 
     handleSearchTerm(event) {
@@ -39,34 +65,32 @@ export default class MoviesListingTemplate extends Component{
     }
 
     handleFullSearch(event) {
-        // TODO: fetch for part 2
-        // event.preventDefault();
-        //
-        // let data = {
-        //     searchTerm: this.state.searchTerm,
-        //     searchBy: this.state.searchBy,
-        //     sortBy: this.state.sortBy
-        // };
+        event.preventDefault();
+        const queryParams = getMoviesSearchQuery(this.state);
+        this.props.history.push(`/search/${queryParams}`);
+
+        this.getMovies();
     }
 
     static getDerivedStateFromError(error) {
-        return { hasError: true };
+        return {hasError: true};
     }
 
-    render(){
+    render() {
         if (this.state.hasError) {
             return <h1>Something went wrong.</h1>;
         }
 
-        return(
+        return (
             <>
                 <Search movies={this.state.movies}
+                        moviesAmount={this.state.moviesAmount}
                         searchTerm={this.state.searchTerm} handleSearchTerm={this.handlerSearchTerm}
                         searchBy={this.state.searchBy} handleSearchBy={this.handlerSearchBy}
                         sortBy={this.state.sortBy} handleSortBy={this.handlerSortBy}
                         handleFullSearch={this.handlerFullSearch}/>
 
-                <Movies movies={this.state.movies} />
+                <Movies movies={this.state.movies}/>
             </>
         )
     }
