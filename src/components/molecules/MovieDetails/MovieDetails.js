@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "../../atoms/Image/Image";
 import {NO_MOVIE_TITLE} from "../../../constants/strings";
+import {getMovieGenresString} from "../../../utils/movie-props";
 import MovieYear from "../../atoms/MovieYear/MovieYear";
 import TextHighlightValue from "../../atoms/TextHighlightValue/TextHighlightValue";
 
@@ -24,6 +25,7 @@ export default function MovieDetails(props) {
                     <TextHighlightValue className="movie-details__digits__year" value={<MovieYear movie={movie} />} afterValue="year"/>
                     <TextHighlightValue className="movie-details__digits__duration" value={runtime} afterValue="min"/>
                 </div>
+                <p>{getMovieGenresString(movie)}</p>
                 <p className="movie-details__details">{overview}</p>
             </div>
         </div>

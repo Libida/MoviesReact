@@ -3,9 +3,10 @@ import Input from "../../atoms/Input/Input";
 import Button from "../../atoms/Button/Button";
 import ButtonGroup from "../ButtonGroup/ButtonGroup";
 import Panel from "../Panel/Panel";
+import {TITLE_TEXT, GENRE_TEXT} from "../../../constants/strings";
 
 export default function Search(props) {
-    const {movies, searchTerm, handleSearchTerm, searchBy, handleSearchBy, sortBy, handleSortBy, handleFullSearch} = props;
+    const {movies, moviesAmount, searchTerm, handleSearchTerm, searchBy, handleSearchBy, sortBy, handleSortBy, handleFullSearch} = props;
 
     return(
         <div className="jumbotron pt-0 pb-5">
@@ -28,12 +29,12 @@ export default function Search(props) {
                             </div>
                             <div className="row">
                                 <div className="col-sm-12">
-                                    <ButtonGroup groupArray={[{text: "Title"}, {text: "Genres"}]}
+                                    <ButtonGroup groupArray={[{text: TITLE_TEXT}, {text: GENRE_TEXT}]}
                                                  id="search-by" handler={handleSearchBy} selectedValue={searchBy} />
                                 </div>
                             </div>
 
-                            <Panel movies={movies} sortBy={sortBy} handleSortBy={handleSortBy}/>
+                            <Panel movies={movies} moviesAmount={moviesAmount} sortBy={sortBy} handleSortBy={handleSortBy}/>
                         </form>
                     </div>
                 </div>

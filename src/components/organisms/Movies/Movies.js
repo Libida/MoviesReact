@@ -1,4 +1,4 @@
-import React, { Component} from "react";
+import React from "react";
 import MovieListingItem from "../../molecules/MovieListingItem/MovieListingItem";
 
 export default function Movies({movies, handleMovies}) {

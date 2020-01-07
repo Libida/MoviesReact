@@ -3,7 +3,7 @@ import propTypes from "prop-types";
 import {NO_IMG_URL} from "../../../constants/strings";
 
 export default function Image({src, alt, title, incomeClasses="", incomeWrapClasses=""}) {
-    const isNoImg = !src;
+    const isNoImg = (src === NO_IMG_URL);
     let baseClasses = "img";
 
     if (isNoImg) {
@@ -20,4 +20,8 @@ export default function Image({src, alt, title, incomeClasses="", incomeWrapClas
 Image.propTypes = {
     src: propTypes.string,
     classes: propTypes.string
+};
+
+Image.defaultProps = {
+    src: NO_IMG_URL
 };
