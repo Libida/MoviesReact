@@ -1,4 +1,10 @@
-import {MOVIE_API_URL} from "../constants/strings";
+import {
+    MOVIE_API_URL,
+    SEARCH_BY_PARAM_TEXT,
+    SEARCH_TERM_PARAM_TEXT,
+    SORT_BY_PARAM_TEXT,
+    SORT_ORDER_PARAM_TEXT, SORT_ORDER_VALUE
+} from "../constants/strings";
 
 export const getMoviesSearchURL = (state = {}) => {
     const queryParams = getMoviesSearchQuery(state);
@@ -7,7 +13,8 @@ export const getMoviesSearchURL = (state = {}) => {
     return url;
 }
 
-export const getMoviesSearchQuery = (state = {}) => `search=${state.searchTerm}&searchBy=${state.searchBy}&sortBy=${state.sortBy}`;
+export const getMoviesSearchQuery = (state = {}) =>
+    `${SEARCH_TERM_PARAM_TEXT}=${state.searchTerm}&${SEARCH_BY_PARAM_TEXT}=${state.searchBy}&${SORT_BY_PARAM_TEXT}=${state.sortBy}&${SORT_ORDER_PARAM_TEXT}=${SORT_ORDER_VALUE}`;
 
 export const getSearchURLParams = (props = {}) => {
     const location = props.location || "";

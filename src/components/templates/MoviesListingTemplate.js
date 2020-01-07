@@ -1,9 +1,15 @@
-import React, {Component, useEffect, useState} from "react";
+import React, {Component, PureComponent} from "react";
 import Movies from "../organisms/Movies/Movies";
 import Search from "../molecules/Search/Search";
 import handleFetchErrors from "../../utils/errors";
 import {getMoviesSearchURL, getMoviesSearchQuery, getSearchURLParams} from "../../utils/urls";
 import {getInitialPropsFromURL} from "../../utils/movie-props";
+import {
+    SEARCH_BY_PARAM_TEXT,
+    SEARCH_TERM_PARAM_TEXT,
+    SORT_BY_PARAM_TEXT,
+    SORT_ORDER_PARAM_TEXT
+} from "../../constants/strings";
 
 export default class MoviesListingTemplate extends Component {
     constructor(props) {
@@ -12,9 +18,10 @@ export default class MoviesListingTemplate extends Component {
         this.state = {
             movies: [],
             moviesAmount: 0,
-            searchTerm: propsFromURL.searchTerm,
-            searchBy: propsFromURL.searchBy,
-            sortBy: propsFromURL.sortBy,
+            searchTerm: propsFromURL[SEARCH_TERM_PARAM_TEXT],
+            searchBy: propsFromURL[SEARCH_BY_PARAM_TEXT],
+            sortBy: propsFromURL[SORT_BY_PARAM_TEXT],
+            sortOrder: propsFromURL[SORT_ORDER_PARAM_TEXT],
             hasError: false
         };
 
@@ -55,20 +62,23 @@ export default class MoviesListingTemplate extends Component {
     handleSearchBy(event) {
         this.setState({
             searchBy: event.target.value
-        });
+        }, () => this.makeRequest());
     }
 
     handleSortBy(event) {
         this.setState({
             sortBy: event.target.value
-        });
+        }, () => this.makeRequest());
     }
 
     handleFullSearch(event) {
         event.preventDefault();
+        this.makeRequest();
+    }
+
+    makeRequest() {
         const queryParams = getMoviesSearchQuery(this.state);
         this.props.history.push(`/search/${queryParams}`);
-
         this.getMovies();
     }
 

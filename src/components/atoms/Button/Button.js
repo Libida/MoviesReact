@@ -1,7 +1,7 @@
 import React from "react";
 import propTypes from "prop-types";
 
-export default function Button({type, text, incomeClasses, isDisabled}) {
+function Button({type, text, incomeClasses, isDisabled}) {
     return(
         <button type={type} className={`btn ${incomeClasses}`} disabled={isDisabled}>{text}</button>
     );
@@ -10,3 +10,5 @@ export default function Button({type, text, incomeClasses, isDisabled}) {
 Button.defaultProps = {
     type: "button"
 };
+
+export default React.memo(Button, (props1, props2) => ((props1.text === props2.text) && (props1.isDisabled === props2.isDisabled)));
