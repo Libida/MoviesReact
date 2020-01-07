@@ -10,6 +10,7 @@ import {
     SORT_BY_PARAM_TEXT,
     SORT_ORDER_PARAM_TEXT
 } from "../../constants/strings";
+import Pagination from "../molecules/Pagination/Pagination";
 
 export default class MoviesListingTemplate extends Component {
     constructor(props) {
@@ -101,6 +102,7 @@ export default class MoviesListingTemplate extends Component {
                         handleFullSearch={this.handlerFullSearch}/>
 
                 <Movies movies={this.state.movies}/>
+                <Pagination movies={this.state.movies} moviesAmount={this.state.moviesAmount}/>
             </>
         )
     }

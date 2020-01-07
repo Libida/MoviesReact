@@ -13,3 +13,5 @@ export const SEARCH_TERM_PARAM_TEXT = "search";
 export const SEARCH_BY_PARAM_TEXT = "searchBy";
 export const SORT_BY_PARAM_TEXT = "sortBy";
 export const SORT_ORDER_PARAM_TEXT = "sortOrder";
+
+export const AMOUNT_OF_ITEMS_PER_PAGE = "12";
