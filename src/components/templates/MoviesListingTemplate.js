@@ -36,6 +36,14 @@ export default class MoviesListingTemplate extends Component {
         this.getMovies();
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.dir("componentDidUpdate MoviesListingTemplate");
+    }
+
+    componentWillUnmount() {
+        console.log("componentWillUnmount MoviesListingTemplate");
+    }
+
     getMovies() {
         const url = getMoviesSearchURL(this.state);
         fetch(url)
@@ -94,15 +102,14 @@ export default class MoviesListingTemplate extends Component {
 
         return (
             <>
-                <Search movies={this.state.movies}
-                        moviesAmount={this.state.moviesAmount}
+                <Search moviesAmount={this.state.moviesAmount}
                         searchTerm={this.state.searchTerm} handleSearchTerm={this.handlerSearchTerm}
                         searchBy={this.state.searchBy} handleSearchBy={this.handlerSearchBy}
                         sortBy={this.state.sortBy} handleSortBy={this.handlerSortBy}
                         handleFullSearch={this.handlerFullSearch}/>
 
-                <Movies movies={this.state.movies}/>
-                <Pagination movies={this.state.movies} moviesAmount={this.state.moviesAmount}/>
+                <Movies />
+                <Pagination />
             </>
         )
     }

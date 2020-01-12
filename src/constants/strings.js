@@ -1,5 +1,6 @@
 export const NO_IMG_URL = "https://sciences.ucf.edu/psychology/wp-content/uploads/sites/63/2019/09/No-Image-Available.png";
 export const NO_MOVIE_TITLE = "Unknown movie title";
+export const NO_MOVIE_YEAR = "Unknown";
 export const MOVIE_API_URL = "https://reactjs-cdp.herokuapp.com";
 export const TITLE_TEXT = "title";
 export const GENRE_TEXT = "genres";

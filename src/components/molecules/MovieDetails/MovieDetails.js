@@ -1,4 +1,5 @@
 import React from "react";
+import {useSelector} from "react-redux";
 import Image from "../../atoms/Image/Image";
 import {NO_MOVIE_TITLE} from "../../../constants/strings";
 import {getMovieGenresString} from "../../../utils/movie-props";
@@ -6,7 +7,7 @@ import MovieYear from "../../atoms/MovieYear/MovieYear";
 import TextHighlightValue from "../../atoms/TextHighlightValue/TextHighlightValue";
 
 export default function MovieDetails(props) {
-    const {movie = {}} = props;
+    const movie = useSelector(state => state.movie) || {};
     const {title = NO_MOVIE_TITLE, poster_path, vote_average, overview, runtime = 0} = movie;
 
     return (

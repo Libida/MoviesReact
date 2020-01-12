@@ -6,13 +6,14 @@ import {
     SORT_BY_DEFAULT_VALUE,
     SORT_BY_PARAM_TEXT,
     SORT_ORDER_PARAM_TEXT,
-    SORT_ORDER_VALUE
+    SORT_ORDER_VALUE,
+    NO_MOVIE_YEAR
 } from "../constants/strings";
 
 export const getMovieYear = (movie = {}) => {
-    const {release_date = ""} = movie;
+    const {release_date = NO_MOVIE_YEAR} = movie;
 
-    return release_date.substring(0, 4);
+    return (release_date === NO_MOVIE_YEAR) ? NO_MOVIE_YEAR : release_date.substring(0, 4);
 };
 
 export const getMovieGenresString = (movie = {})  => {

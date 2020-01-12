@@ -1,7 +1,9 @@
 import React from "react";
 import MovieListingItem from "../../molecules/MovieListingItem/MovieListingItem";
+import {useSelector} from "react-redux";
 
-export default function Movies({movies}) {
+export default function Movies() {
+    const movies = useSelector(state => state.movies);
     let moviesContent;
 
     if (movies.length) {

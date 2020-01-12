@@ -1,26 +1,26 @@
-import React, { Component} from "react";
+import React, { PureComponent} from "react";
+import {connect} from "react-redux";
 import MovieDetails from "../molecules/MovieDetails/MovieDetails";
-import handleFetchErrors from "../../utils/errors";
-import {MOVIE_API_URL} from "../../constants/strings";
+import {updateMovie} from "../../actions/movie";
 
-export default class MovieDetailsTemplate extends Component{
+export class MovieDetailsTemplate extends PureComponent{
     constructor(props) {
         super(props);
         this.state = {
-            movie: {}
+            hasError: false
         };
     }
 
     componentDidMount() {
-        const path = location.pathname;
-        const movieId = path.substr(path.lastIndexOf("/") + 1);
-        fetch(`${MOVIE_API_URL}/movies/${movieId}`)
-            .then(handleFetchErrors)
-            .then(response => response.json())
-            .then(data => {
-                this.setState({ movie: data });
-            })
-            .catch(error => console.log(error));
+        this.props.dispatch(updateMovie());
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.dir("componentDidUpdate MovieDetailsTemplate");
+    }
+
+    componentWillUnmount() {
+        console.log("componentWillUnmount MovieDetailsTemplate");
     }
 
     static getDerivedStateFromError(error) {
@@ -34,10 +34,16 @@ export default class MovieDetailsTemplate extends Component{
 
         return(
             <div className="container">
-                <MovieDetails movie={this.state.movie} />
+                <MovieDetails />
 
                 {/*<Movies movies={this.state.movies} />*/}
             </div>
         )
     }
 }
+
+export default connect((state) => {
+    return {
+        movie: state.movie
+    }
+})(MovieDetailsTemplate);

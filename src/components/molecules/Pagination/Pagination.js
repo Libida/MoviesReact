@@ -1,6 +1,5 @@
 import React from "react";
 import {AMOUNT_OF_ITEMS_PER_PAGE} from "../../../constants/strings";
-import MovieListingItem from "../MovieListingItem/MovieListingItem";
 
 export default function Pagination({movies, moviesAmount}) {
     const amountOfPages = moviesAmount/AMOUNT_OF_ITEMS_PER_PAGE;
