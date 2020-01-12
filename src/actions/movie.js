@@ -1,12 +1,11 @@
 import {UPDATE_MOVIE} from "../constants/actions";
-import {MOVIE_API_URL} from "../constants/strings";
 import handleFetchErrors from "../utils/errors";
+import {getMovieURL} from "../utils/urls";
 
 function fetchMovie() {
-    const path = location.pathname;
-    const movieId = path.substr(path.lastIndexOf("/") + 1);
+    const movieURL = getMovieURL();
 
-    return fetch(`${MOVIE_API_URL}/movies/${movieId}`);
+    return fetch(movieURL);
 }
 
 function showMovie(data) {

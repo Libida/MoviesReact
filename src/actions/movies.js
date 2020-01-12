@@ -1,27 +1,47 @@
-import {UPDATE_MOVIE} from "../constants/actions";
-import {MOVIE_API_URL} from "../constants/strings";
+import {UPDATE_MOVIE, UPDATE_MOVIES} from "../constants/actions";
+import {
+    MOVIE_API_URL,
+    SEARCH_BY_PARAM_TEXT,
+    SEARCH_TERM_PARAM_TEXT,
+    SORT_BY_PARAM_TEXT,
+    SORT_ORDER_PARAM_TEXT
+} from "../constants/strings";
 import handleFetchErrors from "../utils/errors";
+import {getMoviesSearchURL} from "../utils/urls";
+import {getInitialPropsFromURL} from "../utils/movie-props";
 
-function fetchMovie() {
-    const path = location.pathname;
-    const movieId = path.substr(path.lastIndexOf("/") + 1);
+function fetchMovies(urlData) {
+    const url = getMoviesSearchURL(urlData);
 
-    return fetch(`${MOVIE_API_URL}/movies/${movieId}`);
+    return fetch(url);
 }
 
-function showMovie(data) {
+function getInitialDataFromURL() {
+    const propsFromURL = getInitialPropsFromURL() || {};
+
     return {
-        type: UPDATE_MOVIE,
-        movie: data
+        searchTerm: propsFromURL[SEARCH_TERM_PARAM_TEXT],
+        searchBy: propsFromURL[SEARCH_BY_PARAM_TEXT],
+        sortBy: propsFromURL[SORT_BY_PARAM_TEXT],
+        sortOrder: propsFromURL[SORT_ORDER_PARAM_TEXT],
     }
 }
 
-export function updateMovie() {
+function showMovies(data) {
+    return {
+        type: UPDATE_MOVIES,
+        movies: data.data,
+        moviesAmount: data.total
+    }
+}
+
+export function updateMovies() {
     return function(dispatch) {
-        return fetchMovie().then(handleFetchErrors)
+        return fetchMovies(getInitialDataFromURL()).then(handleFetchErrors)
+            .then(handleFetchErrors)
             .then(response => response.json())
             .then(data => {
-                dispatch(showMovie(data))
+                dispatch(showMovies(data))
             })
             .catch(error => console.log(error));
     }

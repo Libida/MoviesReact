@@ -1,9 +1,9 @@
 import React from "react";
 
-function ButtonGroup ({id, groupArray, handler, selectedValue, incomeClasses=""}) {
+function ButtonGroup ({id, groupArray, handler, selectedValue = "", incomeClasses=""}) {
     let buttonGroupItems = groupArray.map((btnToggle, index) => {
         const text = btnToggle.text || "";
-        const value = btnToggle.value || text;
+        const value = btnToggle.value || text || "";
         const textLowerCase = text.toLowerCase();
         const valueLowerCase = value.toLowerCase();
         const isChecked = (selectedValue.toLowerCase() === valueLowerCase);

@@ -3,6 +3,6 @@ import {movieReducer} from "./movie";
 import {moviesReducer} from "./movies";
 
 export const allReducers = combineReducers({
-    movies: moviesReducer,
-    movie: movieReducer,
+    moviesListing: moviesReducer,
+    movieDetails: movieReducer,
 });

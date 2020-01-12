@@ -34,7 +34,7 @@ export default function Search(props) {
                                 </div>
                             </div>
 
-                            <Panel movies={movies} moviesAmount={moviesAmount} sortBy={sortBy} handleSortBy={handleSortBy}/>
+                            <Panel moviesAmount={moviesAmount} sortBy={sortBy} handleSortBy={handleSortBy}/>
                         </form>
                     </div>
                 </div>

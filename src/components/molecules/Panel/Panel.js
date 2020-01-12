@@ -7,8 +7,11 @@ import {
     SORT_ORDER_VALUE,
     SORT_ORDER_PARAM_TEXT, SORT_BY_PARAM_TEXT
 } from "../../../constants/strings";
+import {useSelector} from "react-redux";
 
-export default function Panel({movies, moviesAmount, sortBy, handleSortBy}) {
+export default function Panel({sortBy, handleSortBy}) {
+    const moviesAmount = useSelector(state => state.moviesListing.moviesAmount) || 0;
+
     return(
         <div className="row mt-5 align-items-center">
             <div className="col-12 col-sm-6">

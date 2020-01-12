@@ -7,7 +7,7 @@ import MovieYear from "../../atoms/MovieYear/MovieYear";
 import TextHighlightValue from "../../atoms/TextHighlightValue/TextHighlightValue";
 
 export default function MovieDetails(props) {
-    const movie = useSelector(state => state.movie) || {};
+    const movie = useSelector(state => state.movieDetails.movie) || {};
     const {title = NO_MOVIE_TITLE, poster_path, vote_average, overview, runtime = 0} = movie;
 
     return (

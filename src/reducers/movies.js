@@ -1,11 +1,16 @@
 import {UPDATE_MOVIES, UPDATE_SEARCH_BY, UPDATE_SEARCH_TERM, UPDATE_SORT_BY, UPDATE_SORT_ORDER} from "../constants/actions";
 
-export const moviesReducer = (state = {}, action = {}) => {
+const initialState = {
+    movies: [],
+    moviesAmount: 0
+};
+
+export const moviesReducer = (state = initialState, action = {}) => {
     switch (action.type) {
         case UPDATE_MOVIES:
             return Object.assign({}, state, {
-                movies: action.movies || [],
-                moviesAmount: action.moviesAmount || 0,
+                movies: action.movies,
+                moviesAmount: action.moviesAmount,
             });
         case UPDATE_SEARCH_TERM:
             return Object.assign({}, state, {
@@ -23,7 +28,7 @@ export const moviesReducer = (state = {}, action = {}) => {
             return Object.assign({}, state, {
                 sortOrder: action.sortOrder
             });
-        default:
-            return state;
     }
+
+    return state;
 };

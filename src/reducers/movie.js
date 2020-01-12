@@ -1,9 +1,15 @@
-import {UPDATE_MOVIE} from "../constants/actions";
+import {UPDATE_MOVIE, UPDATE_MOVIES} from "../constants/actions";
 
-export const movieReducer = (state = "", action = {}) => {
+const initialState = {
+    movie: {}
+};
+
+export const movieReducer = (state = initialState, action = {}) => {
     switch (action.type) {
         case UPDATE_MOVIE:
-            return action.movie;
+            return Object.assign({}, state, {
+                movie: action.movie
+            });
     }
 
     return state;

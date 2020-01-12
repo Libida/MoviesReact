@@ -3,10 +3,11 @@ import MovieListingItem from "../../molecules/MovieListingItem/MovieListingItem"
 import {useSelector} from "react-redux";
 
 export default function Movies() {
-    const movies = useSelector(state => state.movies);
+    const movies = useSelector(state => state.moviesListing.movies) || [];
+    const moviesAmount = useSelector(state => state.moviesListing.moviesAmount) || 0;
     let moviesContent;
 
-    if (movies.length) {
+    if (moviesAmount) {
         moviesContent = movies.map(movie =>
             <div className="col-md-4 d-flex align-items-stretch" key={movie.id}>
                 <MovieListingItem movie={movie} />
