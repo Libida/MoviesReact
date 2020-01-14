@@ -1,12 +1,37 @@
 import React from "react";
+import {connect, useSelector} from "react-redux";
+import {bindActionCreators} from "redux";
 import Input from "../../atoms/Input/Input";
 import Button from "../../atoms/Button/Button";
 import ButtonGroup from "../ButtonGroup/ButtonGroup";
 import Panel from "../Panel/Panel";
 import {TITLE_TEXT, GENRE_TEXT, SEARCH_BY_PARAM_TEXT, SEARCH_TERM_PARAM_TEXT} from "../../../constants/strings";
+import {getSearchTerm, getSearchBy, getMoviesListing} from "../../../accessors";
+import * as searchActions from "../../../actions/movies";
+import {getMoviesSearchQuery} from "../../../utils/urls";
 
-export default function Search(props) {
-    const {movies, moviesAmount, searchTerm, handleSearchTerm, searchBy, handleSearchBy, sortBy, handleSortBy, handleFullSearch} = props;
+function Search(props) {
+    const searchTerm = useSelector(getSearchTerm);
+    const searchBy = useSelector(getSearchBy);
+    const moviesListing = useSelector(getMoviesListing);
+    const {history} = props;
+    // const searchTerm = props.searchTerm; // can't make it work (even if pass from parent)
+    const { updateSearchTerm, updateSearchBy, makeFullSearch } = props.actions;
+
+    const handleSearchTerm = (event) => {
+        updateSearchTerm(event.target.value)
+    };
+
+    const handleSearchBy = (event) => {
+        updateSearchBy(event.target.value)
+    };
+
+    const handleFullSearch = (event) => {
+        event.preventDefault();
+        const queryParams = getMoviesSearchQuery(moviesListing);
+        history.push(`/search/${queryParams}`);
+        makeFullSearch(moviesListing);
+    };
 
     return(
         <div className="jumbotron pt-0 pb-5">
@@ -34,7 +59,7 @@ export default function Search(props) {
                                 </div>
                             </div>
 
-                            <Panel moviesAmount={moviesAmount} sortBy={sortBy} handleSortBy={handleSortBy}/>
+                            <Panel />
                         </form>
                     </div>
                 </div>
@@ -42,3 +67,11 @@ export default function Search(props) {
         </div>
     );
 }
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        actions: bindActionCreators(searchActions, dispatch)
+    }
+};
+
+export default connect(null, mapDispatchToProps)(Search);

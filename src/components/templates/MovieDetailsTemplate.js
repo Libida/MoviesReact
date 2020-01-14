@@ -35,8 +35,6 @@ export class MovieDetailsTemplate extends PureComponent{
         return(
             <div className="container">
                 <MovieDetails />
-
-                {/*<Movies movies={this.state.movies} />*/}
             </div>
         )
     }

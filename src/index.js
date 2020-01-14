@@ -12,10 +12,17 @@ import {allReducers} from "./reducers";
 import {Provider} from "react-redux";
 import thunk from "redux-thunk";
 
-const store = createStore(
-    allReducers,
-    applyMiddleware(thunk)
+const composeEnhancers =
+    typeof window === "object" &&
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+        window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+            // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
+        }) : compose;
+
+const enhancer = composeEnhancers(
+    applyMiddleware(thunk),
 );
+const store = createStore(allReducers, enhancer);
 
 ReactDOM.render(
     <Provider store={store}>
@@ -32,4 +39,4 @@ ReactDOM.render(
     </Provider>
     , document.getElementById("root"));
 
-// ReactDOM.render(<Modal id="modal-errors"/>, document.getElementById("modals"));
+ReactDOM.render(<Modal id="modal-errors"/>, document.getElementById("modals"));

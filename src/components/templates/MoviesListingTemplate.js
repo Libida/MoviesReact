@@ -3,7 +3,7 @@ import Movies from "../organisms/Movies/Movies";
 import Search from "../molecules/Search/Search";
 import Pagination from "../molecules/Pagination/Pagination";
 import {connect} from "react-redux";
-import {updateMovies} from "../../actions/movies";
+import {updateMovies, updateSearchTerm, updateFromURL} from "../../actions/movies";
 
 export class MoviesListingTemplate extends PureComponent {
     constructor(props) {
@@ -11,15 +11,10 @@ export class MoviesListingTemplate extends PureComponent {
         this.state = {
             hasError: false
         };
-
-        // this.handlerSearchTerm = this.handleSearchTerm.bind(this);
-        // this.handlerSearchBy = this.handleSearchBy.bind(this);
-        // this.handlerSortBy = this.handleSortBy.bind(this);
-        // this.handlerFullSearch = this.handleFullSearch.bind(this);
     }
 
     componentDidMount() {
-        this.props.dispatch(updateMovies());
+        this.props.dispatch(updateFromURL());
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -30,9 +25,23 @@ export class MoviesListingTemplate extends PureComponent {
         console.log("componentWillUnmount MoviesListingTemplate");
     }
 
-    handleFullSearch(event) {
-        // event.preventDefault();
-        // this.makeRequest();
+    handleMoviesUpdate(movies) {
+        this.setState({
+            movies: movies.data,
+            moviesAmount: movies.total
+        });
+    }
+
+    handleSearchBy(event) {
+        this.setState({
+            searchBy: event.target.value
+        }, () => this.makeRequest());
+    }
+
+    handleSortBy(event) {
+        this.setState({
+            sortBy: event.target.value
+        }, () => this.makeRequest());
     }
 
     static getDerivedStateFromError(error) {
@@ -42,13 +51,14 @@ export class MoviesListingTemplate extends PureComponent {
     }
 
     render() {
+        const {searchTerm, movies, history} = this.props;
         if (this.state.hasError) {
             return <h1>Something went wrong.</h1>;
         }
 
         return (
             <>
-                <Search />
+                <Search searchTerm={searchTerm} history={history}/>
                 <Movies />
                 <Pagination />
             </>
@@ -56,7 +66,7 @@ export class MoviesListingTemplate extends PureComponent {
     }
 }
 
-export default connect((state) => {
+function mapStateToProps(state) {
     return {
         movies: state.movies,
         moviesAmount: state.moviesAmount,
@@ -65,4 +75,5 @@ export default connect((state) => {
         sortBy: state.sortBy,
         sortOrder: state.sortOrder,
     }
-})(MoviesListingTemplate);
+}
+export default connect(mapStateToProps)(MoviesListingTemplate);
