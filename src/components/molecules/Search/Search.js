@@ -8,7 +8,7 @@ import Panel from "../Panel/Panel";
 import {TITLE_TEXT, GENRE_TEXT, SEARCH_BY_PARAM_TEXT, SEARCH_TERM_PARAM_TEXT} from "../../../constants/strings";
 import {getSearchTerm, getSearchBy, getMoviesListing} from "../../../accessors";
 import * as searchActions from "../../../actions/movies";
-import {getMoviesSearchQuery} from "../../../utils/urls";
+import {getMoviesSearchQuery, updateMoviesListingFullSearchURL} from "../../../utils/urls";
 
 function Search(props) {
     const searchTerm = useSelector(getSearchTerm);
@@ -23,14 +23,12 @@ function Search(props) {
     };
 
     const handleSearchBy = (event) => {
-        updateSearchBy(event.target.value)
+        updateSearchBy(event.target.value, moviesListing, history);
     };
 
     const handleFullSearch = (event) => {
         event.preventDefault();
-        const queryParams = getMoviesSearchQuery(moviesListing);
-        history.push(`/search/${queryParams}`);
-        makeFullSearch(moviesListing);
+        makeFullSearch(moviesListing, history);
     };
 
     return(
@@ -59,7 +57,7 @@ function Search(props) {
                                 </div>
                             </div>
 
-                            <Panel />
+                            <Panel history={history}/>
                         </form>
                     </div>
                 </div>

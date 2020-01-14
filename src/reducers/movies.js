@@ -32,7 +32,7 @@ export const moviesReducer = (state = initialState, action = {}) => {
         case UPDATE_STATE_FROM_URL:
             return Object.assign({}, state, {
                 searchTerm: action.payload.searchTerm,
-                sortOrder: action.payload.searchTerm,
+                sortOrder: action.payload.sortOrder,
                 sortBy: action.payload.sortBy,
                 searchBy: action.payload.searchBy,
             });

@@ -21,7 +21,7 @@ export default function Pagination() {
     return (
         <div className="container">
             <nav>
-                <p>Static, possibly will do someday for myself</p>
+                {(amountOfPages > 0) && <p>Static, possibly will do someday for myself</p>}
                 <ul className="pagination pagination-lg">
                     {paginationContent}
                 </ul>

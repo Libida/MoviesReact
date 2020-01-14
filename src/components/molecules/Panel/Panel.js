@@ -9,16 +9,20 @@ import {
 } from "../../../constants/strings";
 import {connect, useSelector} from "react-redux";
 import {bindActionCreators} from "redux";
-import { getSortBy } from "../../../accessors";
+import {getMoviesListing, getSortBy, getMoviesAmount} from "../../../accessors";
 import * as panelActions from "../../../actions/movies";
+import {updateMoviesListingFullSearchURL} from "../../../utils/urls";
 
 function Panel(props) {
     const sortBy = useSelector(getSortBy);
-    const { updateSortBy } = props.actions;
-    const moviesAmount = useSelector(state => state.moviesListing.moviesAmount) || 0;
+    const moviesListing = useSelector(getMoviesListing);
+    const moviesAmount = useSelector(getMoviesAmount);
+    const {history} = props;
+    const { updateSortBy, makeFullSearch } = props.actions;
 
     const handleSortBy = (event) => {
-        updateSortBy(event.target.value)
+        updateSortBy(event.target.value, moviesListing, history);
+        // makeFullSearch(moviesListing, history);sortBy, state, history
     };
 
     return(

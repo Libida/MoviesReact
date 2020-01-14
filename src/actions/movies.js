@@ -12,7 +12,7 @@ import {
     SORT_ORDER_PARAM_TEXT
 } from "../constants/strings";
 import handleFetchErrors from "../utils/errors";
-import {getMoviesSearchURL} from "../utils/urls";
+import {getMoviesSearchQuery, getMoviesSearchURL, updateMoviesListingFullSearchURL} from "../utils/urls";
 import {getInitialPropsFromURL} from "../utils/movie-props";
 
 function fetchMovies(state) {
@@ -63,7 +63,7 @@ export function updateMovies() {
     }
 }
 
-export function showMovies(data) {
+function showMovies(data) {
     return {
         type: UPDATE_MOVIES,
         payload: data
@@ -91,10 +91,14 @@ export function updateSearchBy(searchBy) {
     }
 }
 
-export function makeFullSearch(state) {
+export function makeFullSearch(state, history) {
     return function(dispatch) {
         return updateMoviesByURL(state).then(data => {
-            dispatch(showMovies(data))
+            dispatch(showMovies(data));
+
+            if (history) {
+                updateMoviesListingFullSearchURL(state, history);
+            }
         });
     }
 }
