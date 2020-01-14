@@ -8,23 +8,27 @@ export default function Pagination() {
     const moviesAmount = useSelector(getMoviesAmount);
     const amountOfPages = moviesAmount/AMOUNT_OF_ITEMS_PER_PAGE;
     let paginationContent = [];
+    const isWithPagination = (amountOfPages > 1);
 
     if (amountOfPages > 0) {
-        if (moviesAmount) {
-            // Should create as amountOfPages
-            paginationContent = movies.map((movie, index) =>
-                <li className="page-item" key={movie.id}><a className="page-link" href="#">{index+1}</a></li>
-            );
+        if (isWithPagination) {
+            for (let i = 0; i < (amountOfPages); i++) {
+                paginationContent.push(<li className="page-item" key={`pagination-item-${i}`}><a className="page-link" href="#">{i + 1}</a></li>);
+                if (i == 12 ) {
+                    paginationContent.push(<li className="page-item" key={`pagination-item-${i+1}`}><a className="page-link" href="#">...</a></li>);
+                    break;
+                }
+            }
         }
     }
 
     return (
         <div className="container">
             <nav>
-                {(amountOfPages > 0) && <p>Static, possibly will do someday for myself</p>}
-                <ul className="pagination pagination-lg">
+                {isWithPagination && <p>Static, possibly will do someday for myself</p>}
+                {isWithPagination && <ul className="pagination pagination-lg">
                     {paginationContent}
-                </ul>
+                </ul>}
             </nav>
         </div>
     );

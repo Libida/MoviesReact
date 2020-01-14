@@ -17,14 +17,6 @@ export class MoviesListingTemplate extends PureComponent {
         this.props.dispatch(updateFromURL());
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        console.dir("componentDidUpdate MoviesListingTemplate");
-    }
-
-    componentWillUnmount() {
-        console.log("componentWillUnmount MoviesListingTemplate");
-    }
-
     handleMoviesUpdate(movies) {
         this.setState({
             movies: movies.data,

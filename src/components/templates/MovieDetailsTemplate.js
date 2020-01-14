@@ -15,14 +15,6 @@ export class MovieDetailsTemplate extends PureComponent{
         this.props.dispatch(updateMovie());
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        console.dir("componentDidUpdate MovieDetailsTemplate");
-    }
-
-    componentWillUnmount() {
-        console.log("componentWillUnmount MovieDetailsTemplate");
-    }
-
     static getDerivedStateFromError(error) {
         return { hasError: true };
     }

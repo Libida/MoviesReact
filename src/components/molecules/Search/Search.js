@@ -23,7 +23,7 @@ function Search(props) {
     };
 
     const handleSearchBy = (event) => {
-        updateSearchBy(event.target.value, moviesListing, history);
+        updateSearchBy(event.target.value);
     };
 
     const handleFullSearch = (event) => {
