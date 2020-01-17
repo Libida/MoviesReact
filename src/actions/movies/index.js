@@ -12,18 +12,18 @@ import {
     SORT_ORDER_PARAM_TEXT
 } from "../../constants/strings";
 import handleFetchErrors from "../../utils/errors";
-import {getMoviesSearchQuery, getMoviesSearchURL, updateMoviesListingFullSearchURL} from "../../utils/urls";
+import {getMoviesSearchURL, updateMoviesListingFullSearchURL} from "../../utils/urls";
 import {getInitialPropsFromURL} from "../../utils/movie-props";
+const axios = require("axios");
 
 function fetchMovies(state) {
     const url = getMoviesSearchURL(state);
-    return fetch(url);
+
+    return axios(url);
 }
 
 function updateMoviesByURL(state) {
     return fetchMovies(state).then(handleFetchErrors)
-        .then(handleFetchErrors)
-        .then(response => response.json())
         .catch(error => console.log(error));
 }
 
@@ -63,10 +63,10 @@ export function updateMovies() {
     }
 }
 
-function showMovies(data) {
+function showMovies(data = {}) {
     return {
         type: UPDATE_MOVIES,
-        payload: data
+        payload: data.data
     }
 }
 
@@ -93,7 +93,7 @@ export function updateSearchBy(searchBy) {
 
 export function makeFullSearch(state, history) {
     return function(dispatch) {
-        return updateMoviesByURL(state).then(data => {
+        return updateMoviesByURL(state).then((data) => {
             dispatch(showMovies(data));
 
             if (history) {
