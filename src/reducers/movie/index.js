@@ -1,7 +1,9 @@
-import {UPDATE_MOVIE, UPDATE_MOVIES} from "../constants/actions";
+import {UPDATE_MOVIE} from "../../constants/actions";
 
 const initialState = {
-    movie: {}
+    movie: {
+        "id": 17663
+    }
 };
 
 export const movieReducer = (state = initialState, action = {}) => {

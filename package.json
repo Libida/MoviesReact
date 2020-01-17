@@ -7,7 +7,9 @@
     "build:dev": "webpack --mode=development",
     "build:prod": "webpack --mode=production",
     "start": "webpack-dev-server",
-    "test": "jest"
+    "test": "jest --config ./jest.config.js",
+    "test:coverage": "jest --config ./jest.config.js --coverage",
+    "test:watch": "npm test --watch"
   },
   "repository": {
     "type": "git",
@@ -20,8 +22,15 @@
     "url": "https://github.com/Libida/MoviesReact/issues"
   },
   "homepage": "https://github.com/Libida/MoviesReact#readme",
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "identity-obj-proxy"
+    }
+  },
   "devDependencies": {
     "@babel/core": "^7.6.4",
+    "@babel/plugin-transform-runtime": "^7.8.3",
     "@babel/preset-env": "^7.6.3",
     "babel-loader": "^8.0.6",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
@@ -33,6 +42,7 @@
     "gh-pages": "^2.1.1",
     "history": "^4.10.1",
     "html-webpack-plugin": "^3.2.0",
+    "jest-fetch-mock": "^3.0.1",
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.13.0",
     "postcss-import": "^12.0.1",
@@ -51,6 +61,7 @@
     "@babel/preset-react": "^7.7.4",
     "babel-jest": "^24.9.0",
     "bootstrap": "^4.4.1",
+    "fetch-mock": "^8.3.1",
     "jest": "^24.9.0",
     "normalize-scss": "^7.0.1",
     "prop-types": "^15.7.2",
@@ -61,6 +72,7 @@
     "react-router-dom": "^5.1.2",
     "react-test-renderer": "^16.12.0",
     "redux": "^4.0.5",
+    "redux-mock-store": "^1.5.4",
     "redux-thunk": "^2.3.0"
   }
 }

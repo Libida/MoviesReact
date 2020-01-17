@@ -4,16 +4,16 @@ import {
     UPDATE_SEARCH_TERM,
     UPDATE_SORT_BY,
     UPDATE_STATE_FROM_URL,
-} from "../constants/actions";
+} from "../../constants/actions";
 import {
     SEARCH_BY_PARAM_TEXT,
     SEARCH_TERM_PARAM_TEXT,
     SORT_BY_PARAM_TEXT,
     SORT_ORDER_PARAM_TEXT
-} from "../constants/strings";
-import handleFetchErrors from "../utils/errors";
-import {getMoviesSearchQuery, getMoviesSearchURL, updateMoviesListingFullSearchURL} from "../utils/urls";
-import {getInitialPropsFromURL} from "../utils/movie-props";
+} from "../../constants/strings";
+import handleFetchErrors from "../../utils/errors";
+import {getMoviesSearchQuery, getMoviesSearchURL, updateMoviesListingFullSearchURL} from "../../utils/urls";
+import {getInitialPropsFromURL} from "../../utils/movie-props";
 
 function fetchMovies(state) {
     const url = getMoviesSearchURL(state);

@@ -1,9 +1,9 @@
-import {UPDATE_MOVIE} from "../constants/actions";
-import handleFetchErrors from "../utils/errors";
-import {getMovieURL} from "../utils/urls";
+import {UPDATE_MOVIE} from "../../constants/actions";
+import handleFetchErrors from "../../utils/errors";
+import {getMovieURL} from "../../utils/urls";
 
-function fetchMovie() {
-    const movieURL = getMovieURL();
+export function fetchMovie(id) {
+    const movieURL = getMovieURL(id);
 
     return fetch(movieURL);
 }

@@ -1,5 +1,5 @@
-import {UPDATE_MOVIES, UPDATE_SEARCH_BY, UPDATE_SEARCH_TERM, UPDATE_SORT_BY, UPDATE_STATE_FROM_URL} from "../constants/actions";
-import {SEARCH_BY_DEFAULT_VALUE, SORT_BY_DEFAULT_VALUE} from "../constants/strings";
+import {UPDATE_MOVIES, UPDATE_SEARCH_BY, UPDATE_SEARCH_TERM, UPDATE_SORT_BY, UPDATE_STATE_FROM_URL} from "../../constants/actions";
+import {SEARCH_BY_DEFAULT_VALUE, SORT_BY_DEFAULT_VALUE} from "../../constants/strings";
 
 const initialState = {
     movies: [],
