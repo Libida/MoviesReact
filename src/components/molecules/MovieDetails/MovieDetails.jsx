@@ -1,11 +1,11 @@
 import React from "react";
 import "./MovieDetails.scss";
 import {useSelector} from "react-redux";
-import Image from "../../atoms/Image/Image";
+import Image from "../../atoms/Image/Image.jsx";
 import {NO_MOVIE_TITLE} from "../../../constants/strings";
 import {getMovieGenresString} from "../../../utils/movie-props";
-import MovieYear from "../../atoms/MovieYear/MovieYear";
-import TextHighlightValue from "../../atoms/TextHighlightValue/TextHighlightValue";
+import MovieYear from "../../atoms/MovieYear/MovieYear.jsx";
+import TextHighlightValue from "../../atoms/TextHighlightValue/TextHighlightValue.jsx";
 
 export default function MovieDetails(props) {
     const movie = useSelector(state => state.movieDetails.movie) || {};

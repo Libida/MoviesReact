@@ -1,6 +1,6 @@
 import React from "react";
 import "./Panel.scss";
-import ButtonGroup from "../ButtonGroup/ButtonGroup";
+import ButtonGroup from "../ButtonGroup/ButtonGroup.jsx";
 import {
     RELEASE_DATE_TEXT,
     RATING_TEXT,

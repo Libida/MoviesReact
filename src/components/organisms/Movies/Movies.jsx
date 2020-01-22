@@ -1,5 +1,5 @@
 import React from "react";
-import MovieListingItem from "../../molecules/MovieListingItem/MovieListingItem";
+import MovieListingItem from "../../molecules/MovieListingItem/MovieListingItem.jsx";
 import {useSelector} from "react-redux";
 import {getMovies, getMoviesAmount} from "../../../accessors";
 

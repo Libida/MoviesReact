@@ -1,9 +1,9 @@
 import React from "react";
 import "./MovieListingItem.scss";
-import Image from "../../atoms/Image/Image";
+import Image from "../../atoms/Image/Image.jsx";
 import {Link} from "react-router-dom";
 import {NO_MOVIE_TITLE} from "../../../constants/strings";
-import MovieYear from "../../atoms/MovieYear/MovieYear";
+import MovieYear from "../../atoms/MovieYear/MovieYear.jsx";
 
 export default function MovieListingItem(props) {
     const {movie} = props;

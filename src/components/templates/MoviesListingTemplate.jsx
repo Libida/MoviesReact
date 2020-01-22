@@ -1,7 +1,7 @@
 import React, {PureComponent} from "react";
-import Movies from "../organisms/Movies/Movies";
-import Search from "../molecules/Search/Search";
-import Pagination from "../molecules/Pagination/Pagination";
+import Movies from "../organisms/Movies/Movies.jsx";
+import Search from "../molecules/Search/Search.jsx";
+import Pagination from "../molecules/Pagination/Pagination.jsx";
 import {connect} from "react-redux";
 import {updateMovies, updateSearchTerm, updateFromURL} from "../../actions/movies";
 

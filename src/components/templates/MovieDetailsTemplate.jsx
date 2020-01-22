@@ -1,6 +1,6 @@
 import React, { PureComponent} from "react";
 import {connect} from "react-redux";
-import MovieDetails from "../molecules/MovieDetails/MovieDetails";
+import MovieDetails from "../molecules/MovieDetails/MovieDetails.jsx";
 import {updateMovie} from "../../actions/movie";
 
 export class MovieDetailsTemplate extends PureComponent{
