@@ -1,6 +1,6 @@
 import React from "react";
 import "./Panel.scss";
-import ButtonGroup from "../ButtonGroup/ButtonGroup.jsx";
+import {ButtonGroup} from "../ButtonGroup/ButtonGroup.jsx";
 import {
     RELEASE_DATE_TEXT,
     RATING_TEXT,
@@ -13,16 +13,15 @@ import {bindActionCreators} from "redux";
 import {getMoviesListing, getSortBy, getMoviesAmount} from "../../../accessors";
 import * as panelActions from "../../../actions/movies";
 
-function Panel(props) {
+function PanelFunc(props) {
     const sortBy = useSelector(getSortBy);
     const moviesListing = useSelector(getMoviesListing);
     const moviesAmount = useSelector(getMoviesAmount);
     const {history} = props;
-    const { updateSortBy, makeFullSearch } = props.actions;
+    const { updateSortBy } = props.actions;
 
     const handleSortBy = (event) => {
         updateSortBy(event.target.value, moviesListing, history);
-        // makeFullSearch(moviesListing, history);sortBy, state, history
     };
 
     return(
@@ -45,5 +44,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-export default connect(null, mapDispatchToProps)(Panel);
-
+export const Panel = connect(null, mapDispatchToProps)(PanelFunc);

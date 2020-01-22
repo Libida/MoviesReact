@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-export default function NotFoundTemplate(props) {
+export function NotFoundTemplate(props) {
         return (
             <div className="page-wrap d-flex flex-row align-items-center">
                 <div className="container">

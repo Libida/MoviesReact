@@ -3,7 +3,7 @@ import propTypes from "prop-types";
 import {NO_IMG_URL} from "../../../constants/strings";
 import "./Image.scss";
 
-export default function Image({src, alt, title, incomeClasses="", incomeWrapClasses=""}) {
+export function Image({src, alt, title, incomeClasses="", incomeWrapClasses=""}) {
     const isNoImg = (src === NO_IMG_URL);
 
     return (

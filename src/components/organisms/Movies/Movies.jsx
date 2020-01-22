@@ -1,9 +1,9 @@
 import React from "react";
-import MovieListingItem from "../../molecules/MovieListingItem/MovieListingItem.jsx";
+import {MovieListingItem} from "../../molecules/MovieListingItem/MovieListingItem.jsx";
 import {useSelector} from "react-redux";
 import {getMovies, getMoviesAmount} from "../../../accessors";
 
-export default function Movies(props) {
+export function Movies(props) {
     const movies = useSelector(getMovies) || [];
     const moviesAmount = useSelector(getMoviesAmount);
     let moviesContent;

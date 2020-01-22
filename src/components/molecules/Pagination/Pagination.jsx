@@ -3,7 +3,7 @@ import {AMOUNT_OF_ITEMS_PER_PAGE} from "../../../constants/strings";
 import {useSelector} from "react-redux";
 import {getMovies, getMoviesAmount} from "../../../accessors";
 
-export default function Pagination() {
+export function Pagination() {
     const movies = useSelector(getMovies) || 0;
     const moviesAmount = useSelector(getMoviesAmount);
     const amountOfPages = moviesAmount/AMOUNT_OF_ITEMS_PER_PAGE;

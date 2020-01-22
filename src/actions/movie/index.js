@@ -1,5 +1,5 @@
 import {UPDATE_MOVIE} from "../../constants/actions";
-import handleFetchErrors from "../../utils/errors";
+import {handleFetchErrors} from "../../utils/errors";
 import {getMovieURL} from "../../utils/urls";
 const axios = require("axios");
 

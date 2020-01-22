@@ -11,7 +11,7 @@ import {
     SORT_BY_PARAM_TEXT,
     SORT_ORDER_PARAM_TEXT
 } from "../../constants/strings";
-import handleFetchErrors from "../../utils/errors";
+import {handleFetchErrors} from "../../utils/errors";
 import {getMoviesSearchURL, updateMoviesListingFullSearchURL} from "../../utils/urls";
 import {getInitialPropsFromURL} from "../../utils/movie-props";
 const axios = require("axios");

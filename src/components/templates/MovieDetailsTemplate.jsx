@@ -1,9 +1,9 @@
 import React, { PureComponent} from "react";
 import {connect} from "react-redux";
-import MovieDetails from "../molecules/MovieDetails/MovieDetails.jsx";
+import {MovieDetails} from "../molecules/MovieDetails/MovieDetails.jsx";
 import {updateMovie} from "../../actions/movie";
 
-export class MovieDetailsTemplate extends PureComponent{
+export class MovieDetailsTemplateComponent extends PureComponent{
     constructor(props) {
         super(props);
         this.state = {
@@ -32,8 +32,8 @@ export class MovieDetailsTemplate extends PureComponent{
     }
 }
 
-export default connect((state) => {
+export const MovieDetailsTemplate = connect((state) => {
     return {
         movie: state.movie
     }
-})(MovieDetailsTemplate);
+})(MovieDetailsTemplateComponent);

@@ -1,11 +1,11 @@
 import React, {PureComponent} from "react";
-import Movies from "../organisms/Movies/Movies.jsx";
-import Search from "../molecules/Search/Search.jsx";
-import Pagination from "../molecules/Pagination/Pagination.jsx";
+import {Movies} from "../organisms/Movies/Movies.jsx";
+import {Search} from "../molecules/Search/Search.jsx";
+import {Pagination} from "../molecules/Pagination/Pagination.jsx";
 import {connect} from "react-redux";
-import {updateMovies, updateSearchTerm, updateFromURL} from "../../actions/movies";
+import {updateFromURL} from "../../actions/movies";
 
-export class MoviesListingTemplate extends PureComponent {
+export class MoviesListingTemplateComponent extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -15,25 +15,6 @@ export class MoviesListingTemplate extends PureComponent {
 
     componentDidMount() {
         this.props.dispatch(updateFromURL());
-    }
-
-    handleMoviesUpdate(movies) {
-        this.setState({
-            movies: movies.data,
-            moviesAmount: movies.total
-        });
-    }
-
-    handleSearchBy(event) {
-        this.setState({
-            searchBy: event.target.value
-        }, () => this.makeRequest());
-    }
-
-    handleSortBy(event) {
-        this.setState({
-            sortBy: event.target.value
-        }, () => this.makeRequest());
     }
 
     static getDerivedStateFromError(error) {
@@ -68,4 +49,4 @@ function mapStateToProps(state) {
         sortOrder: state.sortOrder,
     }
 }
-export default connect(mapStateToProps)(MoviesListingTemplate);
+export const MoviesListingTemplate = connect(mapStateToProps)(MoviesListingTemplateComponent);

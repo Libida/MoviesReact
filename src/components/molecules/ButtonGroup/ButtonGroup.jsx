@@ -1,7 +1,7 @@
 import React from "react";
 import "./ButtonGroup.scss";
 
-function ButtonGroup ({id, groupArray, handler, selectedValue = "", incomeClasses=""}) {
+function ButtonGroupFunc ({id, groupArray, handler, selectedValue = "", incomeClasses=""}) {
     let buttonGroupItems = groupArray.map((btnToggle, index) => {
         const text = btnToggle.text || "";
         const value = btnToggle.value || text || "";
@@ -25,4 +25,4 @@ function ButtonGroup ({id, groupArray, handler, selectedValue = "", incomeClasse
     );
 };
 
-export default React.memo(ButtonGroup, (props1, props2) => (props1.selectedValue === props2.selectedValue));
+export const ButtonGroup = React.memo(ButtonGroupFunc, (props1, props2) => (props1.selectedValue === props2.selectedValue));

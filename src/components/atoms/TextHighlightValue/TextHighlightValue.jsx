@@ -1,7 +1,7 @@
 import React from "react";
 import "./TextHighlightValue.scss";
 
-export default function TextHighlightValue(props) {
+export function TextHighlightValue(props) {
     const {value, afterValue, className = ""} = props;
 
     return (

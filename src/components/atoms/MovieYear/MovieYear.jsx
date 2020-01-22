@@ -1,7 +1,7 @@
 import React from "react";
 import {getMovieYear} from "../../../utils/movie-props";
 
-export default function MovieYear(props) {
+export function MovieYear(props) {
     const {movie = {}, className} = props;
     const {release_date = ""} = movie;
 

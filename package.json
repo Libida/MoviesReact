@@ -25,7 +25,7 @@
   "jest": {
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
-      "\\.(css|less)$": "identity-obj-proxy"
+      "\\.(css|less|scss)$": "<rootDir>/__mocks__/styleMock.js"
     }
   },
   "devDependencies": {
@@ -64,6 +64,7 @@
     "bootstrap": "^4.4.1",
     "fetch-mock": "^8.3.1",
     "jest": "^24.9.0",
+    "jest-transform-stub": "^2.0.0",
     "normalize-scss": "^7.0.1",
     "prop-types": "^15.7.2",
     "pug-loader": "^2.4.0",

@@ -1,9 +1,9 @@
 import React from "react";
 import "./Header.scss";
-import Image from "../../atoms/Image/Image.jsx";
+import {Image} from "../../atoms/Image/Image.jsx";
 import {Link} from "react-router-dom";
 
-export default function Header(props) {
+export function Header(props) {
     return(
         <header className="header jumbotron pb-5 pt-5 mb-0">
             <div className="container">

@@ -1,16 +1,15 @@
 import React from "react";
 import {connect, useSelector} from "react-redux";
 import {bindActionCreators} from "redux";
-import Input from "../../atoms/Input/Input.jsx";
-import Button from "../../atoms/Button/Button.jsx";
-import ButtonGroup from "../ButtonGroup/ButtonGroup.jsx";
-import Panel from "../Panel/Panel.jsx";
+import {Input} from "../../atoms/Input/Input.jsx";
+import {Button} from "../../atoms/Button/Button.jsx";
+import {ButtonGroup} from "../ButtonGroup/ButtonGroup.jsx";
+import {Panel} from "../Panel/Panel.jsx";
 import {TITLE_TEXT, GENRE_TEXT, SEARCH_BY_PARAM_TEXT, SEARCH_TERM_PARAM_TEXT} from "../../../constants/strings";
 import {getSearchTerm, getSearchBy, getMoviesListing} from "../../../accessors";
 import * as searchActions from "../../../actions/movies";
-import {getMoviesSearchQuery, updateMoviesListingFullSearchURL} from "../../../utils/urls";
 
-function Search(props) {
+function SearchFunc(props) {
     const searchTerm = useSelector(getSearchTerm);
     const searchBy = useSelector(getSearchBy);
     const moviesListing = useSelector(getMoviesListing);
@@ -72,4 +71,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-export default connect(null, mapDispatchToProps)(Search);
+export const Search = connect(null, mapDispatchToProps)(SearchFunc);

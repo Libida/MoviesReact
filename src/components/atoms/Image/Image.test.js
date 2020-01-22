@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import Image from "./Image";
+import {Image} from "./Image";
 
 it("simple image renders correctly", () => {
     const tree = renderer
