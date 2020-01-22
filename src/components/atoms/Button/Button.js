@@ -1,5 +1,6 @@
 import React from "react";
 import propTypes from "prop-types";
+import "./Button.scss";
 
 function Button({type, text, incomeClasses, isDisabled}) {
     return(

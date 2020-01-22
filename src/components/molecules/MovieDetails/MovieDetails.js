@@ -1,4 +1,5 @@
 import React from "react";
+import "./MovieDetails.scss";
 import {useSelector} from "react-redux";
 import Image from "../../atoms/Image/Image";
 import {NO_MOVIE_TITLE} from "../../../constants/strings";

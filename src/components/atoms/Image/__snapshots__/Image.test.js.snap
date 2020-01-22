@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`image without src renders correctly 1`] = `
+<span
+  className="img-wrap "
+>
+  <img
+    alt="image"
+    className="img img--no-img "
+    src="https://sciences.ucf.edu/psychology/wp-content/uploads/sites/63/2019/09/No-Image-Available.png"
+    title="image"
+  />
+</span>
+`;
+
+exports[`simple image renders correctly 1`] = `
+<span
+  className="img-wrap "
+>
+  <img
+    alt="image"
+    className="img  "
+    src="https://image.tmdb.org/t/p/w500/wB58wlBAr6484Wm6VyFDqSD8VOJ.jpg"
+    title="image"
+  />
+</span>
+`;

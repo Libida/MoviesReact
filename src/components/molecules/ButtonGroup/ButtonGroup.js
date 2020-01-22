@@ -1,4 +1,5 @@
 import React from "react";
+import "./ButtonGroup.scss";
 
 function ButtonGroup ({id, groupArray, handler, selectedValue = "", incomeClasses=""}) {
     let buttonGroupItems = groupArray.map((btnToggle, index) => {

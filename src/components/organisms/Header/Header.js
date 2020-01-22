@@ -1,4 +1,5 @@
 import React from "react";
+import "./Header.scss";
 import Image from "../../atoms/Image/Image";
 import {Link} from "react-router-dom";
 

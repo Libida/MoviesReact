@@ -1,5 +1,6 @@
 import React from "react";
 import propTypes from "prop-types";
+import "./Input.scss";
 
 function Input({id, type, placeholder, incomeClasses, text, handler}) {
     return(

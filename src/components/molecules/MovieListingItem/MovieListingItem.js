@@ -1,4 +1,5 @@
-import React, {Component} from "react";
+import React from "react";
+import "./MovieListingItem.scss";
 import Image from "../../atoms/Image/Image";
 import {Link} from "react-router-dom";
 import {NO_MOVIE_TITLE} from "../../../constants/strings";

@@ -1,4 +1,5 @@
 import React from "react";
+import "./Panel.scss";
 import ButtonGroup from "../ButtonGroup/ButtonGroup";
 import {
     RELEASE_DATE_TEXT,
@@ -11,7 +12,6 @@ import {connect, useSelector} from "react-redux";
 import {bindActionCreators} from "redux";
 import {getMoviesListing, getSortBy, getMoviesAmount} from "../../../accessors";
 import * as panelActions from "../../../actions/movies";
-import {updateMoviesListingFullSearchURL} from "../../../utils/urls";
 
 function Panel(props) {
     const sortBy = useSelector(getSortBy);
