@@ -9,16 +9,16 @@ export function fetchMovie(id) {
     return axios(movieURL);
 }
 
-function showMovie(data) {
+export function showMovie(data) {
     return {
         type: UPDATE_MOVIE,
         movie: data
     }
 }
 
-export function updateMovie() {
+export function updateMovie(id) {
     return function(dispatch) {
-        return fetchMovie().then(handleFetchErrors)
+        return fetchMovie(id).then(handleFetchErrors)
             .then(function (response = {}) {
                 dispatch(showMovie(response.data))
             })
