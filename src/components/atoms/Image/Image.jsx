@@ -8,7 +8,7 @@ export function Image({src, alt, title, incomeClasses="", incomeWrapClasses=""})
 
     return (
         <span className={`img-wrap ${incomeWrapClasses}`}>
-            <img src={src || NO_IMG_URL} alt={alt || title} title={title} className={`img ${isNoImg ? "img--no-img" : ""} ${incomeClasses}`}/>
+            <img src={src} alt={alt || title} title={title} className={`img ${isNoImg ? "img--no-img" : ""} ${incomeClasses}`}/>
         </span>
     );
 };
